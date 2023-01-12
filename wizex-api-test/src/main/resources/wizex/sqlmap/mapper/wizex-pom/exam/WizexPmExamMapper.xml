@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wisenc.wizex.mapper.wizexpom.WizexPmExamMapper">
+
+	<select id="list" resultType="com.wisenc.wizex.api.exam.vo.UserVO">
+		SELECT USER_ID	AS userId
+		     , USER_NM	AS userNm
+		     , PWD		AS pwd
+		     , AUTH		AS auth
+		     , MODI_DT	AS modiDt
+		     , MODI_UID	AS modiUid
+		  FROM  AXM_USER
+		 WHERE 1=1
+		   AND ROWNUM <![CDATA[ < ]]> 10
+	</select>
+</mapper>

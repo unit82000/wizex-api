@@ -1,0 +1,7 @@
+## [NEW] file add
+## [MOD] file modify
+## [DEL] file delete
+## [fNEW] 기능 추가
+
+2023-01-12 ganador
+		1. 릴리즈 관리 시작

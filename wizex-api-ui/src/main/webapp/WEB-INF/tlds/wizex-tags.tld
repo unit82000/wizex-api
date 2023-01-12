@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<description></description>
+	<tlib-version>1.2</tlib-version>
+	<short-name>wizex</short-name>
+
+	<tag>
+		<description>
+        	page navigation renderer
+        </description>
+		<name>pagination</name>
+		<tag-class>com.wisenc.wizex.framework.tags.PaginationTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description></description>
+			<name>searchVO</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description></description>
+			<name>script</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<!-- <function> <name>getTermName</name> <function-class>com.framework.util.CodeUtil</function-class>
+		<function-signature>java.lang.String getTermName(java.lang.String, java.lang.String)</function-signature>
+		</function> -->
+
+</taglib>
+

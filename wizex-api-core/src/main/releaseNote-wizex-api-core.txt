@@ -1,0 +1,13 @@
+## [NEW] file add
+## [MOD] file modify
+## [DEL] file delete
+## [fNEW] 기능 추가
+
+2023-01-12 ganador
+    1.wizex-api-outset project 에서 exam, log 분리
+    2.분리가 완료된 wizex-api-outset proejct 는 wizex-api-core 로 project 변경 
+
+2023-01-03 ganador
+    1. 릴리즈 관리 시작
+    2. wizex-api-outset project 는 추가/변경시 신규 프로젝트로 소스를 완전히 이전
+    3. 모든 소스가 이전되면 프로젝트 삭제 예정

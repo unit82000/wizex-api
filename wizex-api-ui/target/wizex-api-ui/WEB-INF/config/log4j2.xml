@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<properties>
+		<property name="project">wizex-pm-api</property>
+		<property name="pattern">%d{HH:mm:ss} %5p %C{1}.%M(%F:%L) %m%n</property>
+	</properties>
+    <Appenders>
+    	<!-- console appender -->
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${pattern}" />
+        </Console>
+
+        <!-- rolling File Appender -->
+		<RollingFile name="file" 
+		             fileName="/_LOG/wizex/${project}/${project}.log" 
+		             filePattern="/_LOG/wizex/${project}/${project}-%d{yyyy-MM-dd}_%i.log">
+			<PatternLayout>
+				<Pattern>${pattern}</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval = "1" />
+				<SizeBasedTriggeringPolicy size="1MB" />
+			</Policies>
+		</RollingFile>
+		
+		<RollingFile name="frameworkfile" 
+		             fileName="/_LOG/wizex/${project}/spring-${project}.log" 
+		             filePattern="/_LOG/wizex/${project}/spring-${project}-%d{yyyy-MM-dd}_%i.log">
+			<PatternLayout>
+				<Pattern>${pattern}</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval = "1" />
+				<SizeBasedTriggeringPolicy size="1MB" />
+			</Policies>
+		</RollingFile>
+
+    </Appenders>
+    <Loggers>
+    	<Logger name="com.wisenc.wizex" level="TRACE" additivity="false">
+            <AppenderRef ref="console" />
+            <AppenderRef ref="file" />
+        </Logger>
+        <Logger name="org.springframework" level="TRACE" additivity="false">
+            <AppenderRef ref="console" />
+            <AppenderRef ref="frameworkfile" />            
+        </Logger>
+        <Logger name="org.springsource" level="TRACE" additivity="false">
+            <AppenderRef ref="console" />
+            <AppenderRef ref="frameworkfile" />            
+        </Logger>
+        
+        <!-- log SQL with timing information, post execution -->
+        <Logger name="jdbc.sqltiming" level="TRACE" additivity="false">
+            <AppenderRef ref="console" />
+            <AppenderRef ref="file" />
+        </Logger>
+        <Logger name="jdbc.sqlonly" level="OFF" additivity="false">
+        	<AppenderRef ref="console" />
+            <AppenderRef ref="file" />
+        </Logger>
+        <!-- <Logger name="jdbc.audit" level="OFF" additivity="false">
+        	<AppenderRef ref="console" />
+            <AppenderRef ref="file" />
+        </Logger> -->
+        <!-- <Logger name="jdbc.resultset" level="OFF" additivity="false">
+        	<AppenderRef ref="console" />
+            <AppenderRef ref="file" />
+        </Logger> -->
+
+       <Root level="TRACE">
+            <AppenderRef ref="console" />
+            <AppenderRef ref="file" />
+       </Root>
+    </Loggers>
+</Configuration>

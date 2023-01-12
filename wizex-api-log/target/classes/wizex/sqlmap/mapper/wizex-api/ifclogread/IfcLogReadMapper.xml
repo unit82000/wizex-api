@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wisenc.wizex.mapper.wizexapi.ifclogread.IfcLogReadMapper">
+
+	<!-- 인터페이스로그 목록 조회 -->
+	<select id="getIfcLogList" parameterType="com.wisenc.wizex.api.ifclogread.service.IfcLogReadVO" resultType="com.wisenc.wizex.api.ifclogread.service.IfcLogReadVO">
+		SELECT
+			TX_ID 		AS 	txId,
+			IFC_ID		AS	ifcId,
+			REQ_MSG		AS	reqMsg,
+			RES_MSG		AS  resMsg,
+			REQ_DT		AS  reqDt,
+			RES_DT		AS  resDt,
+			REQ_IP		AS	reqIp,
+			PRC_TM		AS 	prcTm
+		FROM
+			SVC_IFC_LOG
+		WHERE
+			1=1
+		<if test="!@org.springframework.util.StringUtils@isEmpty(ifcId)">
+		AND
+			IFC_ID LIKE ('%' || #{ifcId } || '%')
+		</if>
+		<if test="!@org.springframework.util.StringUtils@isEmpty(reqIp)">
+		AND
+			REQ_IP LIKE ('%' || #{reqIp} || '%')
+		</if>
+		<if test="!@org.springframework.util.StringUtils@isEmpty(reqStDt)">
+		AND
+			REQ_DT
+				BETWEEN TO_DATE(#{reqStDt} ,'yyyy-MM-dd"T"HH24:MI:SS')
+		</if>
+		<if test="!@org.springframework.util.StringUtils@isEmpty(reqEdDt)">
+		AND
+				TO_DATE(#{reqEdDt} , 'yyyy-MM-dd"T"HH24:MI:SS')
+		</if>
+		ORDER BY
+			REQ_DT DESC
+	</select>
+</mapper>

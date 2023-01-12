@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wisenc.wizex.mapper.wizexapi.admin.menu.MenuMapper">
+
+	<!-- 메뉴 리스트 -->
+	<select id ="list" parameterType="com.wisenc.wizex.api.admin.menu.service.MenuVO" resultType="com.wisenc.wizex.api.admin.menu.service.MenuVO">
+		SELECT
+			A.*,
+			B.CHILD_COUNT	AS childCount
+		FROM
+			WZX_MENU A
+			LEFT JOIN(
+				SELECT
+					UPER_MENU_ID,
+					COUNT(MENU_ID) AS CHILD_COUNT
+				FROM
+					WZX_MENU
+				WHERE
+					1=1
+				AND
+					USE_YN = 'Y'
+				AND
+					UPER_MENU_ID IS NOT NULL
+				GROUP BY
+					UPER_MENU_ID
+			) B
+			ON
+				A.MENU_ID = B.UPER_MENU_ID
+		WHERE
+			1=1
+		AND
+			USE_YN = 'Y'
+		<choose>
+			<when test="@org.springframework.util.StringUtils@isEmpty(uperMenuId)">
+				AND
+					A.UPER_MENU_ID IS NULL
+			</when>
+			<otherwise>
+				AND
+					A.UPER_MENU_ID = #{uperMenuId }
+			</otherwise>
+		</choose>
+		ORDER BY
+			A.ORD, A.MENU_ID
+	</select>
+
+</mapper>

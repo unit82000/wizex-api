@@ -1,0 +1,30 @@
+## [NEW] file add
+## [MOD] file modify
+## [DEL] file delete
+## [fNEW] 기능 추가
+
+2022-12-28 crl1225
+		1. [MOD] 테스트기간동안 인터페이스 호출 시 모든 url받도록 수정
+			- WizexWebConfig.java -> url '*'로 수정
+
+2022-12-26 crl1225
+		1. [NEW] 인터페이스 호출 테스트용 생성
+			- PF0000001/PF0000006 (판매상품 목록조회/판매상품 기본조회)
+			
+2022-12-19 sry4err
+		1. [MOD] server.xml resource에 다음 설정 추가
+			- testWhileIdle="true"
+			- timeBetweenEvictionRunsMillis="60000"
+
+2022-12-16 sry4err
+		1. [MOD] log4j2 설정 변경
+			- property name="project" : wizex-pom => wizex-pm-api
+
+2022-12-15 crl1225
+		1. [NEW] 상품정보통합관리 -> 상품정보서비스 호출 시 CORS에러 발생으로 자원공유 configuration 자바 파일 생성
+			- WizexWebConfig.java / addCorsMappings 현재기준 local, dev(9090,58080) 설정
+									maxAge (pre-flight 발생으로 호출로그 2건생성-> maxAge 3600초 설정으로 pre-flight 방지) 
+
+2022-12-015 ganador
+		1. 릴리즈 관리 시작
+		2. 이와 같이 이력을 위로 작성, 날짜 옆은 svn id

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wisenc.wizex.mapper.wizexpom.cache.WizexApiCacheMapper">
+
+	<!-- cache 대상 조회 -->
+	<select id="listCache" resultType="string">
+		SELECT
+		    SVT.SVC_TYPE_CD
+		FROM
+		    SVC_SVC_TYPE SVT,
+		    SVC_SVC_TEMPLATE SSTM
+		WHERE
+		    SVT.SVC_TYPE_KIND = '1'
+		    AND SVT.SVC_TYPE_CD = SSTM.SVC_TYPE_CD
+		    AND SSTM.SVC_TEMPLATE_ENM = 'CACHE_YN'
+            AND SSTM.SVC_TEMPLATE_VALUE = 'Y'
+		GROUP BY SVT.SVC_TYPE_CD
+	</select>
+</mapper>

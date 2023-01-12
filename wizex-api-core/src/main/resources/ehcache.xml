@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd
+    												http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd"
+	updateCheck="false">
+
+	<diskStore path="user.home/ehcache" />
+
+	<!-- 기본 설정(필수) -->
+	<defaultCache maxElementsInMemory="10000"
+		maxElementsOnDisk="10000000" eternal="false" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" overflowToDisk="true" diskPersistent="false"
+		diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" />
+
+	<!-- <cache name="wizexApiCache" maxElementsInMemory="1000" overflowToDisk="false" 
+		timeToIdleSeconds="3600" timeToLiveSeconds="3600" /> -->
+
+</ehcache>

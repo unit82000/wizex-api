@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wisenc.wizex.mapper.wizexapi.cndrule.CndRuleMapper">
+
+	<!-- get rule -->
+	<resultMap type="com.wisenc.wizex.api.cndrule.vo.CndRuleVO" id="listCndRule">
+		<result column="CND_RULE_CD"			property="cndRuleCd" />
+		<result column="CND_RULE_NM"			property="cndRuleNm" />
+		<result column="DESCRIBE"					property="describe"	javaType="string"	jdbcType="CLOB" />
+		<result column="APLY_ST_DT"				property="aplyStDt" />
+		<result column="APLY_ED_DT"				property="aplyEdDt" />
+		<result column="CND_RULE_GRP"			property="cndRuleGrp" />
+		<result column="CND_RULE_SCRIPT"		property="cndRuleScript"	javaType="string"	jdbcType="CLOB" />
+		<collection property="svcCndRuleInVOs"
+						column="cndRuleCd=CND_RULE_CD" javaType="list"	ofType="hashmap" 	select="getSvcCndRuleIn" />
+		<collection property="svcCndRuleOutVOs"
+						column="cndRuleCd=CND_RULE_CD" javaType="list"	ofType="hashmap" 	select="getSvcCndRuleOut" />
+	</resultMap>
+	<select id="listCndRule" parameterType="com.wisenc.wizex.api.cndrule.vo.CndRuleParamVO" resultMap="listCndRule">
+		SELECT
+		    CND_RULE_CD
+		    , CND_RULE_NM
+		    , DESCRIBE
+		    , APLY_ST_DT
+		    , APLY_ED_DT
+		    , CND_RULE_GRP
+		    , CND_RULE_SCRIPT
+		FROM
+		    SVC_CND_RULE
+	</select>
+
+	<select id="getSvcCndRuleIn" parameterType="map" resultType="com.wisenc.wizex.api.cndrule.vo.SvcCndRuleInVO">
+		SELECT
+		    CND_RULE_CD AS cndRuleCd
+		    , CND_RULE_IN_SEQ AS cndRuleInSeq
+		    , PARAM_KNM AS paramKnm
+		    , PARAM_ENM AS paramEnm
+		    , INPUT_TYPE AS inputType
+		    , INPUT_GRP AS inputGrp
+		    , ARR_YN AS arrYn
+		FROM
+		    SVC_CND_RULE_IN
+		WHERE
+		    CND_RULE_CD = #{cndRuleCd }
+		ORDER BY CND_RULE_IN_SEQ
+	</select>
+
+	<select id="getSvcCndRuleOut" parameterType="map" resultType="com.wisenc.wizex.api.cndrule.vo.SvcCndRuleOutVO">
+		SELECT
+		    CND_RULE_CD AS
+		    , CND_RULE_OUT_SEQ AS
+		    , PARAM_KNM AS
+		    , PARAM_ENM AS
+		    , INPUT_TYPE AS
+		    , INPUT_GRP AS
+		    , ARR_YN AS
+		FROM
+		    SVC_CND_RULE_OUT
+		WHERE
+		    CND_RULE_CD = #{cndRuleCd }
+		ORDER BY CND_RULE_OUT_SEQ
+	</select>
+
+</mapper>

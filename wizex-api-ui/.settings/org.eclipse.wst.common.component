@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="wizex-api-ui">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <dependent-module archiveName="wizex-api-test-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/wizex-api-test/wizex-api-test">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="wizex-api-log-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/wizex-api-log/wizex-api-log">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="wizex-api-core-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/wizex-api-core/wizex-api-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="wizex-api-ui"/>
+        <property name="java-output-path" value="/wizex-api-ui/target/classes"/>
+    </wb-module>
+</project-modules>

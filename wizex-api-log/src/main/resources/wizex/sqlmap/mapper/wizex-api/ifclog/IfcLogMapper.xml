@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wisenc.wizex.mapper.wizexapi.ifclog.IfcLogMapper">
+
+	<insert id="insert" parameterType="com.wisenc.wizex.api.ifclog.vo.IfcLogVO">
+		INSERT INTO SVC_IFC_LOG (
+		    TX_ID
+		    , IFC_ID
+		    , REQ_MSG
+		    , RES_MSG
+		    , REQ_DT
+		    , RES_DT
+		    , REQ_IP
+		    , PRC_TM
+		) VALUES (
+			#{txId }
+			, #{ifcId }
+			, #{reqMsg, jdbcType=CLOB }
+			, #{resMsg, jdbcType=CLOB }
+			, #{reqDt }
+			, #{resDt }
+			, #{reqIp }
+			, #{prcTm, jdbcType=NUMERIC }
+		)
+	</insert>
+
+</mapper>
